@@ -1,6 +1,4 @@
-{% block style %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/faq.css') }}" />
-{% endblock %} {% block content %}
+ {% block content %}
 <section class="py-5 bg-light">
   <div class="container max-w-3xl mx-auto">
     <h1 class="text-4xl fw-bold text-center mb-8">FAQ'S</h1>
@@ -68,7 +66,7 @@
           aria-labelledby="heading{{ loop.index }}"
           data-bs-parent="#faqAccordion"
         >
-          <div class="accordion-body fs-5 fw-light bg-white">
+          <div class="accordion-body fs-4 fw-light bg-white">
             {{ faq.answer }}
           </div>
         </div>

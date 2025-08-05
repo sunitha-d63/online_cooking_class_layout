@@ -8,9 +8,9 @@ body {
   background-color: white;
 }
 .course-info {
-  width: 280px;
+  width: 350px;
   margin: 0 auto;
-  height: 300px;
+  height: 400;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -43,6 +43,18 @@ body {
 #msgs .bg-primary { max-width: 85%; }
 #msgs .bg-light { max-width: 85%; }
 
-
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .course-info p {
+    font-size: 17px !important;
+  }
+  .coursebtn
+  {
+    font-size: 14px !important;
+  }
+  .course_despara
+  {
+    font-size: 14px !important;
+  }
+}
 
 
