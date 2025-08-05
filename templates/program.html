@@ -1,0 +1,22 @@
+{% extends "layout/base.html" %}
+{% block content %}
+<section class="hero-section position-relative">
+  {% if program_id == "bakery" %}
+    {% include "partials/bakery_hero.html" %}
+  {% elif program_id == "cloud" %}
+    {% include "partials/cloud_hero.html" %}
+  {% else %}
+    <p class="text-center py-5">Invalid program selected.</p>
+  {% endif %}
+</section>
+<div class="container-fluid px-0 mt-4"> 
+  <div class="ratio ratio-16x9">
+    <img
+      src="{{ url_for('static', filename='images/bakkery2.png') }}"
+      alt="Bakery Banner"
+      class="w-100 object-fit-cover rounded"
+    >
+  </div>
+</div>
+{%include 'course_banner.html'%}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'layout/base.html' %}
+{% block title %}Ticket Submitted - Thank You{% endblock %}
+{% block navbar %}
+  {% include 'include/nav_success.html' %}
+{% endblock %}
+{% block content %}
+  <div class="text-center my-5">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, msg in messages %}
+          {% if category == 'success' %}
+            <div class="alert alert-success shadow-sm py-4">
+              <h2 class="h3 fw-bold">Ticket Submitted Successfully!</h2>
+              <p class="lead mb-4">{{ msg }}</p>
+              <a href="{{ url_for('home') }}" class="btn btn-outline-secondary px-4 ms-2">Home</a>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+{% endblock %}

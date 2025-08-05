@@ -1,0 +1,108 @@
+header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 1rem 2rem;
+  background-color: #FFF5E1;
+  flex-wrap: wrap;
+}
+header img {
+  height: 180px;
+  border-radius: 50%;
+}
+header nav {
+  display: flex !important;
+  gap: 1.5rem;
+  font-weight: bold;
+}
+header nav a {
+  text-decoration: none;
+  color: #000;
+  text-align: center;
+}
+header nav a i{
+  font-size: 32px !important;
+}
+body {
+  background-color: #FFF8F2;
+  font-family: Poppins;
+  margin: 0;
+  padding: 0;
+}
+.login-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #FFF5E1;
+  border-radius: 15px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+.login-title {
+  background-color: #A7C957;
+  padding: 12px;
+  text-align: center;
+  border-radius: 50px;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+.login-form label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+.login-form input[type="email"],
+.login-form input[type="password"],
+.login-form input[type="text"],
+.login-form input[type="tel"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 2px solid #e4b2ab;
+  border-radius: 15px;
+  background-color: #fff;
+  outline: none;
+  font-size: 18px !important;
+}
+.submit-btn {
+  background-color: #C14E4E;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 40px;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+  width: 50%;
+  text-align: center;
+  margin: 0 auto;
+}
+.form-links {
+  text-align: center;
+  margin: 15px 0;
+}
+.form-links a {
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+}
+.terms {
+  font-size: 16px;
+  text-align: center;
+  color: #333;
+}
+
+.terms a {
+  text-decoration: underline;
+  color: #000;
+}
+
+/* Flash alert */
+.alert {
+  background-color: #ffdddd;
+  color: #a94442;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #f5c6cb;
+}

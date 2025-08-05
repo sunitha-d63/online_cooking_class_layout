@@ -1,0 +1,5 @@
+ .support-img {
+      max-height: 400px !important;
+      width:     100%;
+      object-fit: cover; 
+    }

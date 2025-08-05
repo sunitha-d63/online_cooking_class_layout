@@ -1,0 +1,23 @@
+body {
+  font-family: Poppins;
+}
+.offer-list {
+  list-style-type: none;
+  max-width: 900px;
+}
+.offer-list li {
+  position: relative;
+  padding-left: 1.5em; 
+}
+.offer-list li::before {
+  content: "\2022";  
+  position: absolute;
+  left: 0;
+  top: 0.125em;
+  font-size: 1.75em;
+  line-height: 1;
+  color: #c94f4f; 
+}
+@media (min-width: 768px) {
+  .offer-list { font-size: 1.25rem; }
+}

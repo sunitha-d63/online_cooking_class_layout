@@ -1,0 +1,47 @@
+{% extends 'layout/base.html' %}
+{% block title %}Cook India's Favourite Dishes{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/course_desc.css') }}">
+{% endblock %}
+{% block content %}
+<div class="banner-wrapper">
+  <div class="image-container">
+    <img src="{{ url_for('static', filename='images/Rectangle 27.png') }}"
+         alt="Banner"
+         class="banner-image">
+  </div>
+  <div class="content-overlay">
+    <h2 class="title fs-3">From Butter Chicken to Singaporean Noodles: Cook India’s Favourite Dishes at Home</h2>
+    <p class="subtitle fs-4">
+      In just 90 days, master the art of cooking 140+ basic to advanced Restaurant and Home styled dishes with step-by-step guidance and recipes!
+    </p>
+    <p class="offer fs-4">Limited Period Offer - Get 67% OFF</p>
+    <div class="price-row">
+      <p class="original">₹ 6000</p>
+      <p class="discounted">₹ 1,999</p>
+    </div>
+    <a href="{{ url_for('enroll') }}" class="enroll-btn">ENROLL NOW</a>
+<p class="note fs-4 mb-2">
+      Learn the secrets of cooking delicious restaurant and home-style dishes with the Masterchef & ace the art of recreating amazing cuisines at home.
+    </p>
+  </div>
+  <div class="bottom-icons">
+    <img src="{{ url_for('static', filename='images/cdInsta.png') }}" alt="Instagram Icon">
+    <img src="{{ url_for('static', filename='images/cdbook.png') }}" alt="Book Icon">
+    <img src="{{ url_for('static', filename='images/cdExpertise.png') }}" alt="Expertise Icon">
+  </div>
+</div>
+{%include 'CourseCurriculum.html'%}
+{%include 'RecipeCard.html'%}
+{%include 'Testimonials.html'%}
+<div class="container-fluid px-0 mt-4"> 
+  <div class="ratio ratio-16x9">
+    <img
+      src="{{ url_for('static', filename='images/bakkery2.png') }}"
+      alt="Bakery Banner"
+      class="w-100 object-fit-cover rounded"
+    >
+  </div>
+</div>
+  {%include 'course_banner.html'%}
+{% endblock %}

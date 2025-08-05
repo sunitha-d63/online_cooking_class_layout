@@ -1,0 +1,28 @@
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/our_values.css') }}">
+{% endblock %}
+{% block content %}
+<section class="values-section py-5">
+  <div class="container text-center mb-4">
+    <h2 class="display-6 fw-bold text-uppercase">Our Values</h2>
+  </div>
+
+  <div class="hero-values position-relative w-100 mx-auto overflow-hidden rounded-3">
+    <img
+      src="{{ url_for('static', filename='images/Group 46.png') }}"
+      alt="Our Values Background"
+      class="img-fluid hero-bg"
+    />
+    <div class="overlay position-absolute top-0 start-0 w-100 h-100"></div>
+    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center p-4">
+      <div class="text-white text-left values-list">
+        <ul>
+          <li><strong>Simplicity:</strong> We keep our recipes simple and approachable, so even beginners can enjoy cooking.</li>
+          <li><strong>Creativity:</strong> We encourage experimenting in the kitchen, mixing ingredients, and discovering new flavors.</li>
+          <li><strong>Community:</strong> Cooking is more fun when shared. We foster a supportive community of food lovers.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

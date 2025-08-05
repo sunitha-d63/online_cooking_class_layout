@@ -1,0 +1,37 @@
+  {% block style %}  
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/nav_sucess.css') }}">
+  {% endblock %}
+<nav class="navbar navbar-expand-lg success-navbar">
+  <div class="container">
+    <a class="navbar-brand p-0" href="#">
+      <img
+        src="{{ url_for('static', filename='images/logo_img2.png') }}"
+        alt="Flavour Theory"
+        class="img-fluid"
+        style="height: 150px; width: auto;"
+      >
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavSuccess"
+      aria-controls="navbarNavSuccess"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavSuccess">
+      <ul class="navbar-nav ms-auto d-flex align-items-center">
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center fw-bold text-dark success-nav-link"
+             href="{{ url_for('home') }}">
+            <i class="bi bi-house-door me-1 fs-1" aria-hidden="true"></i>
+            <span class="d-none d-sm-inline fs-1">HOME</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

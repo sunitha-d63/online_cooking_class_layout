@@ -1,0 +1,23 @@
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/testimonials.css') }}">
+{% endblock %}
+{% block content %}
+<div class="bg-warning-subtle py-5 px-3">
+  <div class="container">
+    <div id="testimonialCarousel" class="carousel slide carousel-fade"
+         data-bs-ride="carousel" data-bs-interval="3000">
+      <div class="carousel-inner position-relative bg-light p-5 rounded shadow text-center">
+        {% for t in testimonials %}
+        <div class="carousel-item {% if loop.first %}active{% endif %}">
+          <img src="{{ url_for('static', filename=t.image) }}"
+               alt="{{ t.author }}"
+               class="testimonial-avatar">
+          <p class="mt-5 fw-bold fs-5">"{{ t.quote }}"</p>
+          <p class="text-end text-dark fw-bold">- {{ t.author }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

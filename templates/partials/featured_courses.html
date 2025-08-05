@@ -1,0 +1,44 @@
+<section class="py-5 bg-light text-center">
+  <div class="container">
+    <h2 class="display-5 fw-bold mb-5">FEATURED COURSES</h2>
+    <div class="row justify-content-center gx-4 gy-5">
+      {% for course in courses %}
+      <div class="col-12 col-sm-6 col-md-4">
+        <div
+          class="card text-white shadow-lg"
+          style="height: 560px; position: relative"
+        >
+          <img
+            src="{{ course.bg_url }}"
+            class="card-img h-100"
+            style="object-fit: cover"
+            alt="Course image"
+          />
+          <div
+            class="card-img-overlay d-flex justify-content-center align-items-center text-center p-3"
+          >
+            <div>
+              <h3 class="text-uppercase fw-bold mb-3">{{ course.title }}</h3>
+              <p class="mb-2 fs-4">{{ course.desc }}</p>
+              <p class="mb-2 fs-4">{{ course.offer }}</p>
+              <p>
+                <span class="text-decoration-line-through text-white me-2">
+                  ₹ {{ course.original_price }}
+                </span>
+                <span class="fw-bold"> ₹ {{ course.discounted_price }} </span>
+              </p>
+              <p class="fw-semibold mb-4">{{ course.price }}</p>
+              <a
+                href="{{ course.link }}"
+                class="btn btn-danger btn-sm fw-bold text-uppercase px-4 fs-5"
+              >
+                Learn More
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,41 @@
+.allcoursecard {
+  width: 100%;
+  max-width: 440px;
+  height: 490px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.course-info {
+  width: 280px;
+  margin: 0 auto;
+  height: 300px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.allcoursecard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 440px;
+}
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .coursecard {
+   font-size: 12px !important;
+  }
+  .course-info {
+  width: 200px;
+  margin: 0 auto;
+  height: 300px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+}

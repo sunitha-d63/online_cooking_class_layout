@@ -1,0 +1,26 @@
+.enrollcontainer
+{
+    background-color: bisque;
+}
+.bg-brand-banner {
+  background-color: #c8e76f;
+  border-color: #a4d157;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 50rem; 
+}
+@media (min-width: 992px) {
+  .bg-brand-banner {
+    font-size: 2.5rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .bg-brand-banner {
+    font-size: 1.5rem; 
+  }
+}
+@media (max-width: 767.98px) {
+  .bg-brand-banner {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,32 @@
+{% block content %}
+<div class="container py-5">
+  <h2 class="display-5 fw-bold text-dark text-center mb-5">Course Curriculum</h2>
+  <div class="position-relative w-100 rounded overflow-hidden">
+    <img
+      src="{{ url_for('static', filename='images/Rectangle 13.png') }}"
+      alt="Course Curriculum"
+      class="img-fluid w-100 rounded shadow"
+      style="max-height: 80vh; object-fit: cover;"
+    />
+<div class="position-absolute top-0 end-0 h-100 d-flex align-items-center justify-content-end px-3 px-md-4 px-lg-5">
+  <ul class="bg-white bg-opacity-75 rounded p-3 p-sm-4 p-md-5 shadow-lg text-start"
+      style="width: 96%; max-width: 500px; font-size: 18px; list-style-type: disc;">
+    <li class="mb-2">Introduction: Restaurant style dishes</li>
+    <li class="mb-2">Master class with master chef</li>
+    <li class="mb-2">Restaurant style dishes: Accompaniments</li>
+    <li class="mb-2">Breads</li>
+    <li class="mb-2">Desserts</li>
+    <li class="mb-2">Main course - non veg</li>
+    <li class="mb-2">Main course - veg</li>
+    <li class="mb-2">Rice</li>
+    <li class="mb-2">Soup - veg</li>
+    <li class="mb-2">Starters non - veg</li>
+    <li class="mb-2">Soup non - veg</li>
+    <li class="mb-2">Starters veg</li>
+    <li class="mb-2">Bonus course: All about US Assessments</li>
+    <li class="mb-2">Thank you</li>
+  </ul>
+</div>
+ </div>
+</div>
+{% endblock %}

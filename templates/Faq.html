@@ -1,0 +1,80 @@
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/faq.css') }}" />
+{% endblock %} {% block content %}
+<section class="py-5 bg-light">
+  <div class="container max-w-3xl mx-auto">
+    <h1 class="text-4xl fw-bold text-center mb-8">FAQ'S</h1>
+  {% set faqs = [
+      {
+        "question": "How do I find a recipe on your website?",
+        "answer": "You can type the dish name in the search bar or browse by category like Vegan, Desserts, etc."
+      },
+      {
+        "question": "Can I save my favorite recipes?",
+        "answer": "Yes! Click 'Save Recipe' when logged in to store recipes in your profile."
+      },
+      {
+        "question": "How do I submit my own recipes?",
+        "answer": "Once logged in, go to 'Submit a Recipe' section and fill in your recipe details."
+      },
+      {
+        "question": "Are the recipes suitable for beginners?",
+        "answer": "Yes, many of our recipes are beginner-friendly with step-by-step instructions."
+      },
+      {
+        "question": "How do I know if a recipe is vegan, gluten-free, or dairy-free?",
+        "answer": "Each recipe includes dietary tags and you can also filter by vegan, gluten-free, or dairy-free."
+      },
+      {
+        "question": "Can I print recipes from the website?",
+        "answer": "Yes, click the 'Print Recipe' button to get a clean, printer-friendly version."
+      },
+      {
+        "question": "Do you offer video tutorials?",
+        "answer": "Some recipes include video tutorials; check the video section on the recipe page."
+      },
+      {
+        "question": "Can I share recipes with my friends and family?",
+        "answer": "Yes, use the 'Share' buttons on recipe pages to send via social media, email, or messaging apps."
+      },
+      {
+        "question": "How can I contact you with questions or suggestions?",
+        "answer": "Visit our Contact Us page or email us at FLOVER THEORY@yourwebsite.com—we welcome feedback."
+      },
+      {
+        "question": "Is there a mobile app for this website?",
+        "answer": "Currently not. However, our website is mobile-responsive and works well on phones and tablets."
+      }
+    ] %}
+
+    <div class="accordion" id="faqAccordion">
+      {% for faq in faqs %} {% set collapse_id = "faqCollapse" ~ loop.index %}
+      <div class="accordion-item mb-4 border rounded overflow-hidden">
+        <h2 class="accordion-header" id="heading{{ loop.index }}">
+          <button
+            class="accordion-button fs-3 collapsed custom-chevron"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#{{ collapse_id }}"
+            aria-expanded="false"
+            aria-controls="{{ collapse_id }}"
+          >
+            {{ loop.index }}. {{ faq.question }}
+          </button>
+        </h2>
+        <div
+          id="{{ collapse_id }}"
+          class="accordion-collapse collapse fs-4"
+          aria-labelledby="heading{{ loop.index }}"
+          data-bs-parent="#faqAccordion"
+        >
+          <div class="accordion-body fs-5 fw-light bg-white">
+            {{ faq.answer }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', filename='css/login.css') }}"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header
+      style="background-color: #fff5e1"
+      class="d-flex justify-content-between align-items-center px-4 py-3"
+    >
+      <div class="d-flex align-items-center">
+        <img
+          src="{{ url_for('static', filename='images/logo_img2.png') }}"
+          alt="Flavour Theory"
+          height="90"
+          style="border-radius: 50%"
+        />
+      </div>
+
+      <nav class="d-flex align-items-center gap-4 fw-bold">
+        <a
+          href="{{ url_for('home') }}"
+          class="text-dark text-decoration-none text-center"
+        >
+          <i class="bi bi-house-door-fill fs-4"></i><br />HOME
+        </a>
+        <a
+          href="{{ url_for('login') }}"
+          class="text-dark text-decoration-none text-center"
+        >
+          <i class="bi bi-fingerprint fs-4"></i><br />LOGIN
+        </a>
+        <a
+          href="{{ url_for('signup') }}"
+          class="text-dark text-decoration-none text-center"
+        >
+          <i class="bi bi-person-plus-fill fs-4"></i><br />SIGN UP
+        </a>
+      </nav>
+    </header>
+    <div class="login-container">
+      <h1 class="login-title">LOGIN</h1>
+      <form method="POST" class="login-form">
+        <label for="email">E MAIL</label>
+        <input type="email" name="email" id="email" required />
+        <label for="password">PASSWORD</label>
+        <input type="password" name="password" id="password" required />
+        <button type="submit" class="submit-btn">SUBMIT</button>
+        <div class="form-links">
+          <a href="{{ url_for('signup') }}">SIGN UP</a> |
+          <a href="{{ url_for('forgot_password') }}">FORGOT PASSWORD</a>
+        </div>
+        <p class="terms">
+          By joining and using Flavour Theory Academy Platform, you agree to our
+          <a href="#">Terms & Policies</a>
+        </p>
+      </form>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

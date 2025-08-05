@@ -1,0 +1,49 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+<section class="hero-section position-relative">
+  <div class="ratio ratio-16x9 ratio-lg-1x1">
+    <img
+      src="{{ url_for('static', filename='images/banner1.png') }}"
+      alt="Bakery Banner"
+      class="w-100 h-100 object-fit-cover">
+  </div>
+  <div class="hero-mask position-absolute top-0 start-0 w-100 h-100"></div>
+  <div class="hero-content text-center text-white position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+    <p class="display-6 fw-bold">BAKERY BUSINESS ACCELERATOR PROGRAM.</p>
+    <p class="h4 fw-semibold mt-2 mb-4">Program Limited to 50 People Only!</p>
+    <img
+      src="{{ url_for('static', filename='images/firsttext.png') }}"
+      class="w-75 mb-4 hero-text-img"
+      alt="Main Text Overlay">
+    <div class="icon-list d-flex flex-column flex-md-row gap-3 gap-md-5 mb-4">
+      {% for icon, text in [
+        ('batch.png', 'Batch II Start Date - 31 July 2025'),
+        ('video.png', '10+ Hrs of Recorded Content'),
+        ('spoon.png', '100+ Baking Recipes'),
+        ('connectivity.png', 'Exclusive Masterclasses')
+      ] %}
+        <div class="d-flex align-items-center gap-2 fs-5 fw-medium">
+          <img src="{{ url_for('static', filename='images/' + icon) }}" width="28" alt="icon">
+          {{ text }}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="program-fees fs-3 fw-bold mb-4">
+      Program Fees: <del>₹ 1,00,000</del> <span class="fs-1 text-warning">₹ 36,000/-</span>
+    </div>
+    <a href="/enroll" class="btn btn-danger btn-lg rounded-pill px-4">ENROLL NOW</a>
+    <img
+      src="{{ url_for('static', filename='images/chef.png') }}"
+      alt="Chef"
+      class="chef-img position-absolute rounded-circle">
+    <div class="booking-note bg-white text-danger fw-bold px-3 py-1 rounded">
+      We're looking for Action-Takers. Only 50 seats open.
+    </div>
+    <div class="bottom-icons d-none d-sm-flex gap-4">
+      {% for img in ['insta.png','author.png','expertise.png'] %}
+        <img src="{{ url_for('static', filename='images/' + img) }}" width="80" alt="icon">
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

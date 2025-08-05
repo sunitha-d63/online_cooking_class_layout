@@ -1,0 +1,13 @@
+{% extends 'layout/base.html' %}
+{% block title %}Enrollment{% endblock %}
+{% block navbar %}
+  {% include 'include/nav_success.html' %}
+{% endblock %}
+{% block style %}  <link rel="stylesheet" href="{{ url_for('static', filename='css/nav_sucess.css') }}">{% endblock %}
+{% block content %}
+<div class="text-center mt-5">
+  <h1 class="text-success">Thank you for enrolling!</h1>
+  <h3>YOUR ENROLL OUR COURSES SUCCESSFULLY</h3>
+  <p>FLOVER THEORY TEAM WILL BE SEND THE COURSES DETAILSIN YOURS MAIL & WHATS APP</p>
+</div>
+{% endblock %}

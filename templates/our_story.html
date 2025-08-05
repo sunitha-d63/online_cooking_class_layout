@@ -1,0 +1,41 @@
+{% block stylesheets %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/about.css') }}"
+/>
+{% endblock %} {% block content %}
+<section class="bg-story text-center text-dark py-5">
+  <div class="container-fluid px-4">
+    <h2 class="display-5 fw-bold mb-4">OUR STORY</h2>
+  </div>
+  <div
+    class="hero-image-container position-relative w-100 mx-auto my-4 rounded-3 overflow-hidden"
+  >
+    <img
+      src="{{ url_for('static', filename='images/Rectangle 26.png') }}"
+      alt="Food background"
+      class="img-fluid hero-bg-image"
+    />
+    <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100"></div>
+
+    <div
+      class="hero-text position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center p-3"
+    >
+      <div class="text-white mx-md-5 mx-lg-0 mx-auto hero-copy">
+        <p class="lead mb-0">
+          Our journey began with a passion for food and the desire to share it
+          with others.
+          <br />
+          <span className="font-semibold">Flavour theory</span>, a passionate
+          home cook and food enthusiast, started the website to create a space
+          where anyone, no matter their skill level, could discover new recipes,
+          learn helpful cooking tips, and explore a world of flavors.
+          <br /><br />
+          Over the years our team has grown, but our core values remain the
+          same: to make every meal feel special and cooking accessible to all.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

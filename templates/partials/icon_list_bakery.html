@@ -1,0 +1,14 @@
+<div class="d-flex flex-column gap-4 mb-4">
+  {% set items = [
+    ("batch.png","Batch II Start Date-31 July 2025"),
+    ("video.png","10+ Hrs of Recorded Content"),
+    ("spoon.png","100+ Baking Recipes"),
+    ("connectivity.png","Exclusive Masterclasses")
+  ] %}
+  {% for icon, label in items %}
+    <div class="d-flex align-items-start gap-4 fs-2">
+      <img src="{{ url_for('static', filename='images/' ~ icon) }}" width="38" alt="Icon">
+      <span class="fs-4 iconlable">{{ label }}</span>
+    </div>
+  {% endfor %}
+</div>

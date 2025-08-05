@@ -1,0 +1,48 @@
+body {
+  font-family: Poppins;
+}
+.content-box {
+  border: 3px solid #A7C957;
+  border-radius: 20px;
+  padding: 1.5rem;
+  background-color: white;
+}
+.course-info {
+  width: 280px;
+  margin: 0 auto;
+  height: 300px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.custom-chevron.accordion-button {
+  background-color: transparent !important;
+  color: #888682; 
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.custom-chevron.accordion-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.custom-chevron.accordion-button:not(.collapsed) {
+  background-color: transparent !important;
+}
+.accordion-flush .accordion-item {
+  border: 0;
+}
+
+#chatOverlay { z-index: 2000; }
+#chatOverlay input:focus { outline: none; }
+#msgs .bg-primary { max-width: 85%; }
+#msgs .bg-light { max-width: 85%; }
+
+
+
+

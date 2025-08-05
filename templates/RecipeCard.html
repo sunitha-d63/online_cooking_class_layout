@@ -1,0 +1,48 @@
+<div class="container py-5">
+  <div class="ratio ratio-16x9 rounded overflow-hidden position-relative">
+    {% if not playing %}
+      <img src="{{ url_for('static', filename='images/noodlesImg.png') }}" alt="Veg Hakka Noodles" class="img-fluid w-100 h-100 object-fit-cover">
+      <button id="playButton"
+              class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center bg-dark bg-opacity-50 border-0">
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="white" class="bi bi-play-circle" viewBox="0 0 16 16">
+          <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zM6.271 5.055A.5.5 0 0 1 6.5 5h.02a.5.5 0 0 1 .285.09l4 2.5a.5.5 0 0 1 0 .82l-4 2.5A.5.5 0 0 1 6.5 11V5a.5.5 0 0 1-.229-.945z"/>
+        </svg>
+      </button>
+      <video id="recipeVideo" class="d-none w-100 h-100" controls>
+        <source src="{{ url_for('static', filename='videos/vegHakkaNoodle.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    {% endif %}
+  </div>
+  <div class="mt-5 text-dark text-start">
+    <h1 class="h4 h-md-2 fw-bold mb-4 fs-1">Veg Hakka Noodles (Indian-Chinese)</h1>
+    <div class="mb-4">
+      <h3 class="h5 fw-bold mb-2 fs-2">Ingredients:</h3>
+      <ul class="list-disc ps-3 fw-semibold fs-5">
+        <li>200g Hakka Noodles</li>
+        <li>2 Tbsp Oil</li>
+        <li>1 Tbsp Soy Sauce</li>
+        <li>1 Tsp Vinegar</li>
+        <li>½ Tsp Chili Sauce</li>
+        <li>1 Tsp Garlic (Finely Chopped)</li>
+        <li>1 Onion (Sliced)</li>
+        <li>1 Cup Julienned Veggies (Carrot, Bell Pepper, Cabbage, Beans)</li>
+        <li>Salt & Pepper</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="h5 fw-bold mb-2 fs-2">Instructions:</h3>
+      <ol class="list-decimal ps-3 fw-semibold fs-5">
+        <li>Boil noodles, rinse with cold water, toss in a bit of oil.</li>
+        <li>Heat oil in a wok, sauté garlic and onions.</li>
+        <li>Add all veggies and stir-fry on high heat for 2-3 mins.</li>
+        <li>Add noodles, soy sauce, vinegar, chili sauce, salt & pepper.</li>
+        <li>Toss on high flame until well combined. Serve hot.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}

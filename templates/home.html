@@ -1,0 +1,40 @@
+{% extends "layout/base.html" %}
+{% block title %}Home{% endblock %}
+{% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">{% endblock %}
+{% block content %}
+{% include 'CoursePromo.html' %}
+  {% set courses = [
+    {
+      "title": "THE GOOD GUT PROGRAM",
+      "desc": "In Just 4 Weeks, Say Goodbye To Bloating, Constipation, Inflammation & Acidity. Plus Gain More Energy & Boost Immunity",
+      "offer": "Get 70% OFF",
+    "original_price": "4999",
+    "discounted_price": "1499",
+      "bg_url": url_for('static', filename='images/card.png'),
+      "link": url_for('course_des')
+    },
+    {
+      "title": "LOOK GOOD COURSE",
+      "desc": "In Just 30 Days, Discover Time Tested & Science Backed Insights, Remedies And Recipes",
+      "offer": "New Launch Offer | Get 88% OFF",
+      "original_price": "42,995",
+    "discounted_price": "4,999",
+      "bg_url": url_for('static', filename='images/card.png'),
+      "link": url_for('course_des')
+    },
+    {
+      "title": "Start Your Food Business From Home",
+      "desc": "Learn How To Start Your Food Business From Home, And Run A Successful Home",
+      "offer": "New Launch Offer | Get 70% OFF",
+      "original_price": "4999",
+    "discounted_price": "1,499",
+      "bg_url": url_for('static', filename='images/card.png'),
+      "link": url_for('course_des')
+    }
+  ] %}
+{% include "partials/featured_courses.html" %}
+{% include "all_courses.html" %}
+{% include 'offer_banner.html' %}
+{%include 'Faq.html'%}
+{%include 'course_banner.html'%}
+{% endblock %}

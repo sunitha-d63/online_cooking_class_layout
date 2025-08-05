@@ -1,0 +1,92 @@
+{% block style %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/courses.css') }}"
+/>
+{% endblock %} {% set courses = [ { "title": "IMMUNITY BOOSTER RECIPES &
+COURSE", "description": "Live well & boost your immunity with time-tested
+recipes by Indian cuisine experts.", "offer": "Limited Period Offer - Get 40%
+OFF", "priceOld": 4000, "priceNew": 1999, "bg_url": url_for('static',
+filename='images/card.png'), "link": url_for('course_des') }, { "title":
+"GARNISHING & PLATING COURSE", "description": "Professional tips from MasterChef
+Sanjeev Kapoor to excel in food presentation!", "offer": "Limited Period Offer -
+Get 60% OFF", "priceOld": 999, "priceNew": 399, "bg_url": url_for('static',
+filename='images/card.png'), "link": url_for('course_des') }, { "title":
+"COOKING AT HOME: RESTAURANT & HOME STYLE", "description": "Turn everyday meals
+into restaurant-quality dishes your family will love.", "offer": "Get 90% OFF",
+"priceOld": 6000, "priceNew": 1999, "bg_url": url_for('static',
+filename='images/card.png'), "link": url_for('course_des') }, { "title":
+"VEGETARIAN'S DELIGHT", "description": "Cook The Tastiest VEGETARIAN Dishes
+Using Everyday Ingredients For Your Loved Ones At Home. A True Delight For A
+Vegetarian!", "offer": "Get 37% OF", "priceOld": 4000, "priceNew": 2499,
+"bg_url": url_for('static', filename='images/card.png'), "link":
+url_for('course_des') }, { "title": "BASIC COOKING FOR SINGLES", "description":
+"Impress Friends And Save Money By Making Amazing Food On Your Own Like The
+MasterChef. From How To Use A Cooker", "offer": "Limited Period Offer - Get 67%
+OFF", "priceOld": 5999, "priceNew": 1999, "bg_url": url_for('static',
+filename='images/card.png'), "link": url_for('course_des') }, { "title":
+"INDIA'S FAVOURITES: HOME STYLE DISHES", "description": "Impress Friends And
+Save Money By Making Amazing Food On Your Own Like The MasterChef. From How To
+Use A Cooker", "offer": "Limited Period Offer - Get 67% OF", "priceOld": 6000,
+"priceNew": 1999, "bg_url": url_for('static', filename='images/card.png'),
+"link": url_for('course_des') }, ] %} {# INLINE LOOP FOR ALL COURSES #}
+<section class="py-5 bg-light text-center">
+  <div class="container">
+    <h2 class="display-5 fw-bold mb-5">ALL COURSES</h2>
+    <div
+      class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 gx-4 gy-4"
+    >
+      {% for course in courses %}
+      <div class="col d-flex justify-content-center">
+        <div class="card allcoursecard shadow-lg d-flex flex-column h-100">
+          <div
+            class="card allcoursecard shadow-lg position-relative"
+            style="
+                   width: 100%;
+                   max-width: 440px;
+                   height: 490px;
+                   background-image: url('{{ course.bg_url }}');
+                   background-size: cover;
+                   background-position: center;
+                 "
+          >
+            <div
+              class="card-body d-flex flex-column justify-content-between h-100 coursecard"
+            >
+              <h5
+                class="card-title text-uppercase text-white fw-bold fs-5 mb-0"
+              >
+                {{ course.title }}
+              </h5>
+              <div class="course-info bg-white text-dark rounded p-3 mt-2">
+                <p class="text-center small fw-semibold fs-4 mb-1">
+                  {{ course.description }}
+                </p>
+                <p class="text-center fw-bold fs-6 mb-1">{{ course.offer }}</p>
+                <div
+                  class="d-flex gap-2 justify-content-center align-items-center"
+                >
+                  <span class="text-decoration-line-through text-muted fs-6">
+                    ₹{{ course.priceOld }}
+                  </span>
+                  <span class="fw-bold fs-6 text-dark">
+                    ₹{{ course.priceNew }}
+                  </span>
+                </div>
+              </div>
+              <div class="text-center mt-3">
+                <a
+                  href="{{ course.link }}"
+                  class="btn btn-danger rounded-pill px-4 fw-semibold text-uppercase fs-5"
+                >
+                  Learn More
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
