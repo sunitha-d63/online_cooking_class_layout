@@ -8,7 +8,7 @@
 
 .image-container {
   position: relative;
-  height: 70vh;
+  height: 90vh;
   overflow: hidden;
   border-radius: 1rem;
 }
@@ -32,14 +32,13 @@
 }
 
 .content-overlay .title {
-  font-size: 1rem;
   font-weight: bold;
   color: #000;
 }
 
 .content-overlay .subtitle,
 .content-overlay .note {
-  font-size: 0.8rem;
+  font-size: 18px;
   color: #000;
   margin-top: 0.5rem;
   max-width: 600px;
@@ -102,7 +101,6 @@
   width: 140px;
 }
 
-/* Responsive adjustments */
 @media only screen and (max-width: 575.98px) {
   .content-overlay .title {
     font-size: 12px !important;

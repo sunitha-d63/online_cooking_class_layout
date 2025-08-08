@@ -1,0 +1,22 @@
+.bi-chat-left-text
+{
+    color:#A7C957;
+}
+
+.no-border {
+  border: none;
+  box-shadow: none;
+  outline: none;
+  background: transparent;
+  padding-right: 3rem;
+}
+
+.no-border:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.position-absolute.end-0 {
+  right: 0;
+}

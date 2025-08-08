@@ -1,56 +1,57 @@
+ {% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='css/faq.css') }}">{% endblock %}
  {% block content %}
-<section class="py-5 bg-light">
+<section class="py-5">
   <div class="container max-w-3xl mx-auto">
     <h1 class="text-4xl fw-bold text-center mb-8">FAQ'S</h1>
   {% set faqs = [
       {
         "question": "How do I find a recipe on your website?",
-        "answer": "You can type the dish name in the search bar or browse by category like Vegan, Desserts, etc."
+        "answer": "You can easily find a recipe by using the search bar at the top of the page. Simply type in the dish you're looking for, and we’ll provide a list of relevant recipes. Alternatively, you can browse recipes by category (e.g., Quick Meals, Desserts, Vegan, etc.)."
       },
       {
         "question": "Can I save my favorite recipes?",
-        "answer": "Yes! Click 'Save Recipe' when logged in to store recipes in your profile."
+        "answer": "Yes! If you have an account, you can save your favorite recipes to your profile for quick access later. Simply click the Save Recipe button on any recipe page."
       },
       {
         "question": "How do I submit my own recipes?",
-        "answer": "Once logged in, go to 'Submit a Recipe' section and fill in your recipe details."
+        "answer": "We’d love to see your recipes! To submit, you need to be logged in. Once logged in, you can navigate to the “Submit a Recipe” section and fill out the form with your recipe details, ingredients, and instructions."
       },
       {
         "question": "Are the recipes suitable for beginners?",
-        "answer": "Yes, many of our recipes are beginner-friendly with step-by-step instructions."
+        "answer": "Absolutely! We offer a wide variety of recipes, many of which are beginner-friendly with simple ingredients and step-by-step instructions. We also provide cooking tips to help guide you along the way."
       },
       {
         "question": "How do I know if a recipe is vegan, gluten-free, or dairy-free?",
-        "answer": "Each recipe includes dietary tags and you can also filter by vegan, gluten-free, or dairy-free."
+        "answer": "Each recipe includes dietary information and tags to indicate if it’s vegan, gluten-free, dairy-free, or suitable for other specific dietary preferences. You can also filter recipes by these categories when browsing."
       },
       {
         "question": "Can I print recipes from the website?",
-        "answer": "Yes, click the 'Print Recipe' button to get a clean, printer-friendly version."
+        "answer": "Yes! On each recipe page, you’ll find a “Print Recipe” button that allows you to print the recipe directly. This will provide a clean, printer-friendly version of the recipe."
       },
       {
         "question": "Do you offer video tutorials?",
-        "answer": "Some recipes include video tutorials; check the video section on the recipe page."
+        "answer": "Some of our recipes come with video tutorials. You can watch the step-by-step cooking process in the video section of the recipe page. You’ll also find some general cooking tips and techniques in our blog section."
       },
       {
         "question": "Can I share recipes with my friends and family?",
-        "answer": "Yes, use the 'Share' buttons on recipe pages to send via social media, email, or messaging apps."
+        "answer": "Yes, you can! Each recipe page has share buttons to allow you to share recipes via social media, email, or messaging apps. Just click the 'Share' button and choose your preferred platform."
       },
       {
         "question": "How can I contact you with questions or suggestions?",
-        "answer": "Visit our Contact Us page or email us at FLOVER THEORY@yourwebsite.com—we welcome feedback."
+        "answer": "You can contact us through the “Contact Us” page or send us an email directly at [FLOVER THEORY@yourwebsite.com]. We’re happy to answer any questions and appreciate any feedback or recipe suggestions!"
       },
       {
         "question": "Is there a mobile app for this website?",
-        "answer": "Currently not. However, our website is mobile-responsive and works well on phones and tablets."
+        "answer": "At the moment, we only offer a website. However, our site is fully responsive and optimized for mobile devices, so you can easily browse recipes, watch videos, and save your favorites on your phone or tablet."
       }
     ] %}
 
-    <div class="accordion" id="faqAccordion">
+    <div class="accordion mt-5" id="faqAccordion">
       {% for faq in faqs %} {% set collapse_id = "faqCollapse" ~ loop.index %}
       <div class="accordion-item mb-4 border rounded overflow-hidden">
         <h2 class="accordion-header" id="heading{{ loop.index }}">
           <button
-            class="accordion-button fs-3 collapsed custom-chevron"
+            class="accordion-button fs-4 fw-semibold collapsed custom-chevron"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#{{ collapse_id }}"
@@ -66,8 +67,8 @@
           aria-labelledby="heading{{ loop.index }}"
           data-bs-parent="#faqAccordion"
         >
-          <div class="accordion-body fs-4 fw-light bg-white">
-            {{ faq.answer }}
+          <div class="accordion-body fs-4 fw-light text-black bg-white">
+            • {{ faq.answer }}
           </div>
         </div>
       </div>

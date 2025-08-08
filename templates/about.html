@@ -1,22 +1,25 @@
-{% extends "layout/base.html" %}
-{% block title %}Home{% endblock %}
-{% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">{% endblock %}
-{% block content %}
+{% extends "layout/base.html" %} {% block title %}Home{% endblock %} {% block
+style %}<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/about.css') }}"
+/>{% endblock %} {% block content %}
 <div class="container py-5">
   <div class="row gx-4 align-items-stretch">
-      <div class="col-12 col-md-7">
-      <div class="content-box h-100 d-flex flex-column justify-content-center">
-        <h2 class="fw-bold text-center ">
-           MORE POWER TO YOUR COOKING!<br />THROUGH LEARNING
+    <div class="col-12 col-md-7 gradient-custom">
+      <div class="content-box h-100 d-flex flex-column justify-content-center ">
+        <h2 class="fw-bold text-center">
+          MORE POWER TO YOUR COOKING!<br />THROUGH LEARNING
         </h2>
-        <p class="text-muted fs-2 text-center mt-3">
+        <p class="text-muted text-center fs-5">
           Discover A Better Way Of Cooking Amazing Dishes<br />
           With Recipes Specially Curated By The Most<br />
           Celebrated Face In The Indian Cuisine.
         </p>
-        <div class="text-center mt-auto">
-          <a href="{{ url_for('courses') }}"
-             class="btn btn-danger btn-lg text-uppercase px-5 fw-semibold">
+        <div class="text-center">
+          <a
+            href="{{ url_for('courses') }}"
+            class="btn btn-danger btn-lg text-uppercase px-5 fw-semibold rounded-pill"
+          >
             View Courses
           </a>
         </div>
@@ -24,31 +27,33 @@
     </div>
     <div class="col-12 col-md-5">
       <div class="card h-100 shadow-sm border-0">
-        <img src="{{ url_for('static', filename='images/about.png') }}"
-             class="card-img-top h-100"
-             style="object-fit: cover;"
-             alt="Chef"/>
+        <img
+          src="{{ url_for('static', filename='images/about.png') }}"
+          class="card-img-top h-100"
+          style="object-fit: cover"
+          alt="Chef"
+        />
       </div>
     </div>
   </div>
 </div>
+
+
 <section class="about-section text-center py-5">
   <div class="container px-4">
     <h2 class="display-5 fw-bold mb-4">ABOUT US</h2>
-    <p class="lead mb-3">
-      Welcome to <strong>Flavour Theory</strong>—your go-to place for delicious recipes, culinary inspiration,
-      and a community of food lovers!
+    <p class="mb-3 fs-4">
+      Welcome to Flavour Theory—your go-to place for delicious
+      recipes, culinary inspiration, and a community of food lovers!
     </p>
-    <p class="lead mb-0">
-      At Flavour Theory, we believe that cooking is more than just preparing food—it's about creativity,
-      joy, and bringing people together. Whether you're a seasoned chef or just starting your culinary journey,
-      our mission is to make cooking easy, fun, and accessible to everyone.
+    <p class="mb-0 fs-4">
+      At Flavour Theory, we believe that cooking is more than just preparing
+      food—it's about creativity, joy, and bringing people together. Whether
+      you're a seasoned chef or just starting your culinary journey, our mission
+      is to make cooking easy, fun, and accessible to everyone.
     </p>
   </div>
 </section>
-{% include 'our_story.html'%}
-{%include 'what_we_offer.html'%}
-{%include 'offer_banner.html'%}
-{%include 'our_values.html'%}
-{%include 'course_banner.html'%}
-{% endblock %}
+{% include 'our_story.html'%} {%include 'what_we_offer.html'%} {%include
+'offer_banner.html'%} {%include 'our_values.html'%} {%include
+'course_banner.html'%} {% endblock %}

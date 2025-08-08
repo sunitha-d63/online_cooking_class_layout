@@ -7,6 +7,8 @@ import os
 from werkzeug.utils import secure_filename
 from config import Config
 from forms import EnrollmentForm
+from flask import session
+import re
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -14,6 +16,52 @@ app.config.from_object(Config)
 db.init_app(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    next_url = request.args.get('next', None)
+
+    if request.method == 'POST':
+        email = request.form.get('email', '').strip()
+        password = request.form.get('password', '')
+
+        if not email or not password:
+            flash("Both email and password are required.", "danger")
+            return redirect(url_for('login', next=next_url))
+
+        user = User.query.filter_by(email=email).first()
+        if user and check_password_hash(user.password_hash, password):
+            login_user(user)
+            flash('Login successful!', 'success')
+            return redirect(next_url or url_for('home'))
+        else:
+            flash('Invalid email or password.', 'danger')
+            return redirect(url_for('login', next=next_url))
+
+    return render_template('login.html', next=next_url)
+
+default_replies = [
+    { 'id': 1, 'sender': 'S', 'text': 'Hello there! Thank you for reaching out to us.' },
+    { 'id': 2, 'sender': 'S', 'text': 'How can I help you today?' },
+    { 'id': 3, 'sender': 'S', 'text': 'We offer courses for all skill levels.' },
+    { 'id': 4, 'sender': 'S', 'text': 'Our classes are available both online and offline.' },
+    { 'id': 5, 'sender': 'S', 'text': 'Feel free to browse our course catalog!' },
+    { 'id': 6, 'sender': 'S', 'text': 'You can reach support via email or this chat.' },
+    { 'id': 7, 'sender': 'S', 'text': 'Want a recommendation? Just ask!' },
+    { 'id': 8, 'sender': 'S', 'text': 'All our chefs are certified and experienced.' },
+    { 'id': 9, 'sender': 'S', 'text': 'We also offer weekend batches.' },
+    { 'id': 10, 'sender': 'S', 'text': 'Let me know if you want a callback.' },
+    ]
+
+@app.context_processor
+def inject_default_replies():
+    return dict(default_replies=default_replies)
+
+@app.route('/')
+@login_required
+def home():
+   return render_template("home.html", name=current_user.name)
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'pdf', 'txt'}
 app.config['UPLOAD_FOLDER'] = os.path.join(app.root_path, 'uploads')
@@ -34,33 +82,58 @@ def support():
     form_data = {}
 
     if request.method == 'POST':
+        email = request.form.get('email', '').strip()
+        subject = request.form.get('subject', '').strip()
+        description = request.form.get('description', '').strip()
+        captcha = request.form.get('captcha')
+        uploaded_file = request.files.get('attachment')
+
         form_data = {
-            'email':       request.form.get('email', '').strip(),
-            'subject':     request.form.get('subject', '').strip(),
-            'description': request.form.get('description', '').strip(),
-            'captcha':     request.form.get('captcha'),
-            'attachment':  None
+            'email': email,
+            'subject': subject,
+            'description': description,
+            'captcha': captcha,
+            'attachment': None
         }
-        if not errors:
-            uploaded = request.files.get('attachment')
-            if uploaded and uploaded.filename:
-                if allowed_file(uploaded.filename):
-                    filename = secure_filename(uploaded.filename)
-                    saved_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-                    uploaded.save(saved_path)
+
+        if not email:
+            errors['email'] = "Email is required."
+        elif not re.match(r"^[\w\.-]+@[\w\.-]+\.\w+$", email):
+            errors['email'] = "Enter a valid email address."
+
+        if not subject:
+            errors['subject'] = "Subject is required."
+
+        if not description:
+            errors['description'] = "Description is required."
+
+        if captcha != 'on':
+            errors['captcha'] = "Please confirm you are not a robot."
+
+        if uploaded_file and uploaded_file.filename:
+            if allowed_file(uploaded_file.filename):
+                filename = secure_filename(uploaded_file.filename)
+                filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+
+                try:
+                    uploaded_file.save(filepath)
                     form_data['attachment'] = filename
-                else:
-                    errors['attachment'] = "Allowed types: png, jpg, pdf, txt."
+                except Exception as e:
+                    errors['attachment'] = "Failed to save file. Try again."
+            else:
+                errors['attachment'] = "Allowed file types: png, jpg, jpeg, pdf, txt."
 
         if not errors:
-            ticket = SupportTicket.create_from_form(form_data)
+            ticket = SupportTicket.create_from_form(
+                form_data,
+                user_id=current_user.id if current_user.is_authenticated else None
+            )
             db.session.add(ticket)
             db.session.commit()
-
-            flash('Your ticket was submitted successfully.', 'success')
+            flash("Your ticket was submitted successfully.", "success")
             return redirect(url_for('ticket_success'))
 
-        flash('Please correct the errors below and resubmit.', 'danger')
+        flash("Please correct the errors below and resubmit.", "danger")
 
     return render_template('contact.html', form=form_data, errors=errors)
 
@@ -116,28 +189,6 @@ def api_login():
     login_user(user)
     return jsonify({"message": "Login successful"}), 200
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-
-        user = User.query.filter_by(email=email).first()
-
-        if user and check_password_hash(user.password_hash, password):
-            login_user(user)
-            flash('Login successful!', 'success')
-            return redirect(url_for('home'))
-        else:
-            flash('Invalid email or password', 'danger')
-
-    return render_template('login.html')
-
-@app.route('/')
-@login_required
-def home():
-    return render_template("home.html", name=current_user.name)
-
 @app.route('/logout')
 @login_required
 def logout():
@@ -150,11 +201,24 @@ def signup():
 
 @app.route('/forgot-password', methods=['GET', 'POST'])
 def forgot_password():
+    session.pop('_flashes', None) 
+
     if request.method == 'POST':
         email = request.form.get('email')
-        flash('If this email is registered, you will receive a password reset link.')
-        return redirect(url_for('forgot_password'))
+        new_password = request.form.get('password')
+
+        user = User.query.filter_by(email=email).first()
+        if user:
+            user.password_hash = generate_password_hash(new_password)
+            db.session.commit()
+            flash('Your password has been reset successfully.', 'success')
+            return redirect(url_for('login'))
+        else:
+            flash('No account found with this email.', 'danger')
+            return redirect(url_for('forgot_password'))
+
     return render_template('forgot_password.html')
+
 
 @app.route('/about')
 def about():
@@ -162,7 +226,8 @@ def about():
 
 @app.route('/programs')
 def programs():
-    return render_template('programs.html')
+    return render_template('program.html', program_id='bakery')
+
 
 @app.route('/courses')
 def courses():
@@ -240,24 +305,53 @@ def bakery():
 @app.route('/cloud')
 def cloud():
     return render_template('program.html', program_id='cloud')
+from flask import session
 
 @app.route('/enroll', methods=['GET', 'POST'])
 def enroll():
     form = EnrollmentForm()
-    if form.validate_on_submit():
-        new = Enrollment(
-            name=form.name.data.strip(),
-            email=form.email.data.strip(),
-            mobile=form.mobile.data.strip(),
-            gstin=form.gstin.data,
-            coupon=form.coupon.data.strip() or None,
-            payment=form.payment.data
-        )
-        db.session.add(new)
-        db.session.commit()
-        flash("Enrollment successful! See you at the class.", "success")
-        return redirect(url_for('enroll_success'))
-    return render_template('enroll.html', form=form)
+    subtotal = 36000
+    discount = 0
+    total = subtotal * 1
+
+    if request.method == 'POST':
+        form.payment.data = request.form.get('payment')
+
+        if form.validate_on_submit():
+            if form.coupon.data:
+                discount = 1000
+                flash(f"Coupon applied! Discount: INR {discount}", "success")
+                total = (subtotal - discount) * 1
+
+            new = Enrollment(
+                name=form.name.data.strip(),
+                email=form.email.data.strip(),
+                mobile=form.mobile.data.strip(),
+                gstin=form.gstin.data,
+                coupon=form.coupon.data.strip() or None,
+                payment=form.payment.data
+            )
+            db.session.add(new)
+            db.session.commit()
+            session['form_submitted'] = True
+
+            flash("Enrollment successful! See you at the class.", "success")
+            return redirect(url_for('enroll_success'))
+
+    elif request.method == 'GET':
+        if not session.get('form_submitted'):
+            if current_user.is_authenticated:
+                form.name.data = current_user.name
+                form.email.data = current_user.email
+                form.mobile.data = current_user.mobile
+        else:
+            session.pop('form_submitted', None)
+
+    return render_template('enroll.html',
+                           form=form,
+                           subtotal=subtotal,
+                           discount=discount,
+                           total=total)
 
 @app.route('/enrollsuccess')
 def enroll_success():

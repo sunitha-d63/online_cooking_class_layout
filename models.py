@@ -3,6 +3,9 @@ from flask_login import UserMixin
 from datetime import datetime
 from flask_login import current_user
 from flask_sqlalchemy import SQLAlchemy
+from flask_wtf import FlaskForm
+from wtforms import StringField, BooleanField, RadioField, SubmitField
+from wtforms.validators import InputRequired, Email, Length, Regexp, Optional
 db = SQLAlchemy()
 
 class User(UserMixin, db.Model):
@@ -44,14 +47,29 @@ class SupportTicket(db.Model):
 
 class Enrollment(db.Model):
     __tablename__ = 'enrollment'
-    id         = db.Column(db.Integer, primary_key=True)
-    name       = db.Column(db.String(128), nullable=False)
-    email      = db.Column(db.String(128), nullable=False, index=True)
-    mobile     = db.Column(db.String(10), nullable=False)
-    gstin      = db.Column(db.Boolean, nullable=False, default=False)
-    coupon     = db.Column(db.String(64), nullable=True)
-    payment    = db.Column(db.String(10), nullable=False) 
-    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(128), nullable=False)
+    email = db.Column(db.String(128), nullable=False, index=True)
+    mobile = db.Column(db.String(10), nullable=False)
+    gstin = db.Column(db.Boolean, nullable=False, default=False)
+    coupon = db.Column(db.String(64), nullable=True)
+    payment = db.Column(db.String(10), nullable=False)
+
+    created_at = db.Column(
+        db.DateTime, nullable=False,
+        default=datetime.utcnow
+    )
+    updated_at = db.Column(
+        db.DateTime, nullable=False,
+        default=datetime.utcnow,
+        onupdate=datetime.utcnow
+    )
 
     def __repr__(self):
-        return f"<Enrollment {self.email} [{self.payment}]>"
+        return f"<Enrollment {self.email} ({self.payment})>"
+
+class EnrollmentForm(FlaskForm):
+    name = StringField('Name', default='')
+    email = StringField('Email', default='')
+    mobile = StringField('Mobile', default='')

@@ -1,13 +1,17 @@
-<footer class="bg-danger text-white py-5">
-  <div class="container fs-5">
+<footer class="text-white py-5">
+  <div class="container">
     <div class="row text-center text-lg-start gy-4">
       <div
         class="col-12 col-lg-2 d-flex justify-content-start align-items-center"
       >
         <img
-          src="/static/images/logo_img2.png"
+          id="logoImage"
+          src="{{ url_for('static', filename='images/logo_img2.png') }}"
           alt="Flavour Theory"
-          class="logo-img"
+          height="80"
+          width="200"
+          class="img-fluid logo-img"
+          onclick="toggleLogo()"
         />
       </div>
       <div class="col-6 col-sm-6 col-lg-2">
@@ -21,11 +25,7 @@
             >
           </li>
           <li>
-            <a
-              href="#"
-              class="text-white text-decoration-none"
-              >PROGRAMS</a
-            >
+            <a href="{{ url_for('programs') }}" class="text-white text-decoration-none">PROGRAMS</a>
           </li>
           <li>
             <a
@@ -61,8 +61,8 @@
         <p class="mb-2">
           <i class="bi bi-telephone-fill"></i> 044 - 987 6785 5677
         </p>
-        <h6 class="fw-bold mt-4">FOLLOW US</h6>
-        <div class="d-flex justify-content-start gap-3 fs-5">
+        <h6 class="mt-4">FOLLOW US</h6>
+        <div class="d-flex justify-content-start gap-4 fs-5">
           <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
           <a href="#" class="text-white"><i class="bi bi-google"></i></a>
           <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>

@@ -4,6 +4,7 @@ body {
 .offer-list {
   list-style-type: none;
   max-width: 900px;
+  text-align: left;
 }
 .offer-list li {
   position: relative;

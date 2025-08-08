@@ -1,3 +1,8 @@
+{% block
+style %}<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/about.css') }}"
+/>{% endblock %}
 <div class="offer-banner position-relative overflow-hidden rounded-4 shadow-lg mx-auto my-5" style="max-width: 1190px;">
   <img 
     src="{{ url_for('static', filename='images/free_gift.png') }}" 
@@ -7,17 +12,17 @@
   />
   <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column">
     <div class="flex-grow-1 d-flex align-items-center justify-content-start ps-4 ps-md-5 pt-3 pt-md-4">
-      <div style="max-width: 380px;">
-        <h4 class="text-white fw-bold mb-1">LIMITED PERIOD OFFER:</h4>
-        <h1 class="text-white fw-bold display-6 mb-3">FREE GIFT WITH EVERY COURSE</h1>
-        <hr class="border-secondary mb-2"/>
+      <div style="max-width: 390px;">
+        <h4 class="text-white fw-bold">LIMITED PERIOD OFFER:</h4>
+        <h4 class="text-white fw-bold">FREE GIFT WITH EVERY COURSE</h4>
+        <hr class="thick-white" />
         <p class="lead text-light course_despara">
           GET ACCESS TO BONUS VIDEOS WITH PREMIUM RECIPES & COOK AMAZING DISHES WITH <span class="fw-semibold">US CRANBERRIES</span>.
         </p>
       </div>
     </div>
-    <div class="d-flex justify-content-center pb-3">
-      <a href="{{ url_for('course_des') }}" class="btn btn-danger btn-lg px-5 fw-semibold text-uppercase coursebtn">
+    <div class="d-flex justify-content-center pb-3 mt-auto">
+      <a href="{{ url_for('course_des') }}" class="btn btn-danger btn-lg px-5 fw-semibold text-uppercase coursebtn rounded-pill">
         Learn More
       </a>
     </div>

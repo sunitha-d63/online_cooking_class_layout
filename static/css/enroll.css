@@ -1,26 +1,52 @@
-.enrollcontainer
-{
-    background-color: bisque;
+
+.custom-input {
+  border-top-left-radius: 1.5rem !important;
+  border-bottom-left-radius: 1.5rem !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
-.bg-brand-banner {
-  background-color: #c8e76f;
-  border-color: #a4d157;
-  border-style: solid;
-  border-width: 2px;
-  border-radius: 50rem; 
+
+.custom-btn {
+  border-top-right-radius: 1.5rem !important;
+  border-bottom-right-radius: 1.5rem !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
 }
-@media (min-width: 992px) {
-  .bg-brand-banner {
-    font-size: 2.5rem;
-  }
+.label-pill {
+  font-weight: 600;
+  padding: 0.75rem 1rem;
 }
-@media (min-width: 768px) and (max-width: 991.98px) {
-  .bg-brand-banner {
-    font-size: 1.5rem; 
-  }
+
+.input-pill-left {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
-@media (max-width: 767.98px) {
-  .bg-brand-banner {
-    font-size: 1rem;
-  }
+
+.input-pill-right {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.custom-space {
+  padding-left: 10px; 
+}
+.login-container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #FFF5E1;
+  border-radius: 15px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+.login-title {
+  background-color: #A7C957;
+  padding: 9px !important;
+  text-align: center;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: -7%;
 }

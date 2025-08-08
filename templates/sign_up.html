@@ -54,7 +54,7 @@
     </header>
 
     <div class="login-container">
-      <h1 class="login-title">SIGN UP</h1>
+      <h2 class="login-title">SIGN UP</h2>
 
       <form id="signup-form" class="login-form" novalidate>
         <label for="name">NAME</label>
@@ -70,14 +70,12 @@
           type="tel"
           id="mobile"
           name="mobile"
-          inputmode="tel"
-          placeholder="+91 xxxxxxxxxx"
+          inputmode="numeric"
+          pattern="\d{10}"
+          maxlength="10"
           minlength="10"
-          maxlength="13"
-          pattern="^(?:\+91|0)?[6-9]\d{9}$"
-          title="Indian mobile: "
-          autocomplete="tel"
-          aria-describedby="mobile-error-message"
+          title="Enter 10-digit mobile number"
+          oninput="this.value = this.value.replace(/[^0-9]/g, '')"
           required
         />
         <div
@@ -86,13 +84,19 @@
           aria-live="polite"
         ></div>
         <p id="signup-error-message" class="text-danger small"></p>
-        <button id="signup-submit" type="submit" class="submit-btn">SIGN UP</button>
+        <button id="signup-submit" type="submit" class="submit-btn">
+          SIGN UP
+        </button>
         <div class="form-links">
-          <a href="{{ url_for('login') }}">ALREADY HAVE AN ACCOUNT? LOGIN</a>
+          <a href="{{ url_for('login') }}">LOGIN</a>|
+          <a href="{{ url_for('forgot_password') }}" class="forgot-link"
+            >FORGOT PASSWORD</a
+          >
         </div>
         <p class="terms">
-          By signing up, you agree to our
-          <a href="#">Terms & Policies</a>
+          By joining and using Flavour Theory Academy <br />Platform, you agree
+          to our.
+          <a href="#" class="terms">Terms & Policies</a>
         </p>
       </form>
     </div>

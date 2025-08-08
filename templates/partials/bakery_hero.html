@@ -1,46 +1,74 @@
 {% block style %}
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/baker_hero.css') }}">
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/baker_hero.css') }}"
+/>
 {% endblock %}
 <div class="container text-center mb-2">
-  <h1 class="display-6 fw-bold">
-    BAKERY BUSINESS ACCELERATOR PROGRAM
-  </h1>
-  <h2 class="fw-semibold">
-  Program Limited to 50 people Only!
-  </h2>
+  <h1 class="display-6 fw-bold">BAKERY BUSINESS ACCELERATOR PROGRAM</h1>
+  <h2 class="fw-semibold">Program Limited to 50 people Only!</h2>
 </div>
 {% block content %}
-<section class="banner-hero position-relative overflow-hidden mt-3">
-  <div class="dark-overlay position-absolute top-0 start-0 w-100 h-100"></div>
-  <div class="container">
-    <div class="row align-items-center justify-content-start gx-4">
-      <div class="col-12 col-md-8 banner-text text-white text-center text-md-start px-4">
-        <h1 class="mb-3">Launch &amp; Grow Your Bakery Business in 60 Days</h1>
-        <p class="fs-4 mb-4">
-          Even if you don't have any prior experience in baking!
-        </p>
-         <div class="ps-md-3 ps-lg-4 fs-4">
-        {% include 'partials/icon_list_bakery.html' %}
+<div class="banner-wrapper">
+  <section class="banner-hero position-relative overflow-hidden mt-3">
+    <div class="dark-overlay position-absolute top-0 start-0 w-100 h-100"></div>
+    <div class="container">
+      <div class="row align-items-center justify-content-start gx-4">
+        <div
+          class="col-12 col-md-8 banner-text text-white text-center text-md-start px-4"
+        >
+          <h1 class="mb-3">
+            Launch &amp; Grow Your Bakery Business in 60 Days
+          </h1>
+          <p class="fs-4 mb-4">
+            Even if you don't have any prior experience in baking!
+          </p>
+          <div class="ps-md-3 ps-lg-4 fs-4">
+            {% include 'partials/icon_list_bakery.html' %}
+          </div>
+          <p class="fw-bold my-3 fs-4">Program Fees: ₹ 1 Lakh | ₹ 36,000/-</p>
+          <a
+            href="{{ url_for('enroll') }}"
+            class="btn btn-danger btn-lg mb-2 mx-4"
+            >ENROLL NOW</a
+          >
+          <p class="text-white">
+            We're looking for Action Takers. Program Limited to 50 people Only!
+          </p>
         </div>
-        <p class="fw-bold my-3 fs-4">Program Fees: ₹ 1 Lakh | ₹ 36,000/-</p>
-        <a href="{{ url_for('enroll') }}" class="btn btn-danger btn-lg mb-2 mx-4">ENROLL NOW</a>
-        <p class="text-white fs-3"> We're looking for Action Takers. Program Limited to 50 people Only!</p>
-      </div>
-      <div class="col-12 col-md-4 d-none d-md-flex justify-content-center chef-col">
-        <img
-          src="{{ url_for('static', filename='images/chefimg.png') }}"
-          class="chef-img img-fluid rounded-circle"
-          alt="Chef baking">
+        <div
+          class="col-12 col-md-4 d-none d-md-flex justify-content-center chef-col"
+        >
+          <img
+            src="{{ url_for('static', filename='images/chefimg.png') }}"
+            class="chef-img img-fluid rounded-circle"
+            alt="Chef baking"
+          />
+        </div>
       </div>
     </div>
+  </section>
+  <div class="bottom-icons">
+    <img
+      src="{{ url_for('static', filename='images/insta.png') }}"
+      alt="Instagram Icon"
+    />
+    <img
+      src="{{ url_for('static', filename='images/author.png') }}"
+      alt="Book Icon"
+    />
+    <img
+      src="{{ url_for('static', filename='images/expertise.png') }}"
+      alt="Expertise Icon"
+    />
   </div>
-</section>
+</div>
 {% block mobile_chef_late %}
 <div class="d-block d-md-none text-center mt-5 mb-4 my-4">
   <img
     src="{{ url_for('static', filename='images/chefimg.png') }}"
     class="img-fluid rounded-circle"
-    alt="Chef baking">
+    alt="Chef baking"
+  />
 </div>
-{% endblock mobile_chef_late %}
-{% endblock content %}
+{% endblock mobile_chef_late %} {% endblock content %}

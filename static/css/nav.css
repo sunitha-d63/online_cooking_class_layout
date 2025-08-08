@@ -1,0 +1,18 @@
+nav{
+    background-color: #FFF5E1 !important;
+}
+ul > li > a {
+  color: #5B4E44 !important;
+  font-weight: 400 !important;
+}
+.dropdown-menu
+{
+  background-color: #FFF5E1 !important;
+  border:0;
+}
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: #FFF5E1 !important;
+  color: #000 !important;
+}
+

@@ -1,13 +1,18 @@
 {% set user = session.get('user') %}
-<nav class="navbar navbar-expand-lg bg-light px-4 py-3">
+{% block
+style %}<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/nav.css') }}"
+/>{% endblock %}
+<nav class="navbar navbar-expand-lg px-4 py-3">
   <div class="container-fluid">
-    <img
-      src="/static/images/logo_img2.png"
-      alt="Flavour Theory"
-      height="80"
-      width="200"
-      class="img-fluid"
-    />
+<img
+  id="logoImage"
+  src="{{ url_for('static', filename='images/logo_img2.png') }}"
+  alt="Flavour Theory" height="80" width="200"
+  class="img-fluid"
+  onclick="toggleLogo()"
+/>
     <button
       class="navbar-toggler"
       type="button"
@@ -26,15 +31,15 @@
       <ul
         class="navbar-nav mx-auto mb-2 mb-lg-0 text-center w-100 justify-content-center"
       >
-        <li class="nav-item mx-lg-3 mx-2">
-          <a class="nav-link fw-bold fs-4" href="/">HOME</a>
+        <li class="nav-item mx-lg-3 mx-3">
+          <a class="nav-link  fs-4" href="/">HOME</a>
         </li>
-        <li class="nav-item mx-lg-3 mx-2">
-          <a class="nav-link fw-bold fs-4" href="/about">ABOUT</a>
+        <li class="nav-item mx-lg-3 mx-3">
+          <a class="nav-link fs-4" href="/about">ABOUT</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown mx-3">
           <a
-            class="nav-link dropdown-toggle fw-bold fs-4"
+            class="nav-link dropdown-toggle  fs-4"
             href="#"
             id="programsDropdown"
             role="button"
@@ -56,9 +61,9 @@
             {% endfor %}
           </ul>
         </li>
-        <li class="nav-item dropdown mx-lg-3 mx-2">
+        <li class="nav-item dropdown mx-lg-3 mx-3">
           <a
-            class="nav-link dropdown-toggle fw-bold fs-4"
+            class="nav-link dropdown-toggle  fs-4"
             href="/courses"
             id="coursesDropdown"
             role="button"
@@ -100,14 +105,14 @@
         </li>
 
         <li class="nav-item mx-lg-3 mx-2">
-          <a class="nav-link fw-bold fs-4" href="{{ url_for('support') }}"
+          <a class="nav-link  fs-4" href="{{ url_for('support') }}"
             >CONTACT</a
           >
         </li>
       </ul>
-      <div class="d-flex ms-lg-5 ms-md-4 ms-3">
+       <div class="d-flex ms-lg-5 ms-md-4 ms-3">
         {% if current_user.is_authenticated %}
-        <a href="{{ url_for('logout') }}" class="btn btn-danger fw-bold fs-5"
+        <a href="{{ url_for('logout') }}" class="btn btn-danger  fs-5 logoutbtn rounded-pill"
           >Logout</a
         >
         {% endif %}
@@ -115,3 +120,13 @@
     </div>
   </div>
 </nav>
+  {% block scripts %}
+<script>
+  function toggleLogo() {
+    const img = document.getElementById('logoImage');
+    const logo1 = "{{ url_for('static', filename='images/logo_img1.png') }}";
+    const logo2 = "{{ url_for('static', filename='images/logo_img2.png') }}";
+    img.src = img.src.endsWith('logo_img2.png') ? logo1 : logo2;
+  }
+</script>
+{% endblock %}

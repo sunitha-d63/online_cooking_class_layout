@@ -1,67 +1,108 @@
-{% block content %}
-<div
-  id="chatOverlay"
-  class="d-none position-fixed w-100 h-100 top-0 start-0 d-flex justify-content-center align-items-center bg-black bg-opacity-50"
->
-  <div
-    class="bg-white rounded"
-    style="
-      width: 360px;
-      max-height: 80vh;
-      display: flex;
-      flex-direction: column;
-    "
-  >
-    <div
-      class="d-flex align-items-center justify-content-between px-3 py-2 border-bottom"
-    >
-      <strong>Inbox</strong>
-      <button id="closeChat" class="btn btn-sm text-secondary">&times;</button>
-    </div>
-    <div
-      id="msgs"
-      class="flex-fill overflow-auto p-3 fs-4"
-      style="min-height: 200px"
-    ></div>
-    <div class="px-3 py-2 border-top d-flex">
-      <input
-        id="inp"
-        type="text"
-        class="form-control rounded-pill me-2"
-        placeholder="REPLY HERE"
-      />
-      <button id="sendBtn" class="btn btn-danger rounded-pill px-3">
-        Send
-      </button>
-    </div>
-  </div>
-</div>
-<section class="bg-light py-5 text-center position-relative">
+{% block style %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/chat.css') }}"
+/>
+{% endblock %} {% block content %}
+<section class="py-5 text-center position-relative">
   <div class="container" style="max-width: 900px">
     <p class="fs-2 fw-semibold mb-4">
       Homemakers to busy executives, budding chefs to food entrepreneurs,
-      grandparents to moms, health conscious people or foodies - there's a
+      grandparents to moms, health conscious people or foodies – there's a
       course for all.
     </p>
     <a
-  id="viewBtn"
-  class="btn btn-danger btn-lg rounded-pill"
-  href="{{ url_for('courses') }}"
->
-  VIEW COURSES
-</a>
-    <button
-  id="chatToggle"
-  type="button"
-  class="btn btn-outline-success position-absolute top-0 end-0 m-3"
-  title="Chat"
-  aria-label="Open live chat"
->
-  <i class="bi bi-chat-right-text fs-4" aria-hidden="true"></i>
-</button>
+      id="viewBtn"
+      class="btn btn-danger btn-lg rounded-pill"
+      href="{{ url_for('courses') }}"
+    >
+      VIEW COURSES
+    </a>
 
+    <button
+      id="chatToggle"
+      type="button"
+      class="btn position-absolute bottom-0 end-0 m-3"
+      title="Chat"
+      data-bs-toggle="modal"
+      data-bs-target="#chatModal"
+      aria-label="Open chat"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        style="color: #aed636"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+      >
+        <path
+          d="M4 4h16v12H5.17L4 17.17V4zm0-2a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4z"
+        />
+        <path d="M6 9h12v2H6zM6 6h12v2H6z" />
+      </svg>
+    </button>
   </div>
 </section>
+
+<div class="modal fade" id="chatModal" tabindex="0" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="max-width: 360px">
+    <div
+      class="modal-content rounded-xl bg-light"
+      style="background-color: #fff2e9"
+    >
+      <div class="modal-header border-bottom px-4 py-3">
+        <div class="d-flex flex-column">
+          <i class="bi bi-person fs-2 text-secondary"></i>
+          <h5 class="modal-title fw-semibold text-dark">Inbox</h5>
+        </div>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body overflow-auto" style="max-height: 60vh">
+        {% for msg in messages %}
+        <div class="d-flex align-items-start mb-2">
+          <span
+            class="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center me-2"
+            style="width: 24px; height: 24px; font-size: 0.75rem"
+          >
+            {{ msg.sender[0] }}
+          </span>
+          <div class="bg-white rounded-pill px-3 py-2 text-dark">
+            {{ msg.text }}
+          </div>
+        </div>
+        {% else %}
+        <p class="text-center text-muted">No messages yet.</p>
+        {% endfor %}
+      </div>
+      <div class="modal-footer border-0 px-4 py-3">
+  <div class="position-relative w-100">
+    <input
+      type="text"
+      id="chatInput"
+      class="form-control px-4 py-2 no-border"
+      placeholder="Reply here"
+    />
+    <div class="position-absolute top-50 end-0 translate-middle-y pe-3 d-flex gap-2">
+      <i class="bi bi-paperclip text-secondary"></i>
+      <i class="bi bi-emoji-smile text-secondary"></i>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
 {% endblock %} {% block scripts %}
+
+<script>
+  const defaultReplies = JSON.parse('{{ default_replies | tojson | safe }}');
+</script>
 <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
 {% endblock %}
+</div>
+

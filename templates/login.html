@@ -16,14 +16,12 @@
   <body>
     <header
       style="background-color: #fff5e1"
-      class="d-flex justify-content-between align-items-center px-4 py-3"
+      class="d-flex justify-content-between align-items-center px-3 py-2"
     >
-      <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center logo">
         <img
           src="{{ url_for('static', filename='images/logo_img2.png') }}"
           alt="Flavour Theory"
-          height="90"
-          style="border-radius: 50%"
         />
       </div>
 
@@ -49,8 +47,9 @@
       </nav>
     </header>
     <div class="login-container">
-      <h1 class="login-title">LOGIN</h1>
+      <h2 class="login-title">LOGIN</h2>
       <form method="POST" class="login-form">
+        <input type="hidden" name="next" value="{{ request.args.get('next', '') }}">
         <label for="email">E MAIL</label>
         <input type="email" name="email" id="email" required />
         <label for="password">PASSWORD</label>
@@ -58,11 +57,11 @@
         <button type="submit" class="submit-btn">SUBMIT</button>
         <div class="form-links">
           <a href="{{ url_for('signup') }}">SIGN UP</a> |
-          <a href="{{ url_for('forgot_password') }}">FORGOT PASSWORD</a>
+          <a href="{{ url_for('forgot_password') }}" class="forgot-link">FORGOT PASSWORD</a>
         </div>
         <p class="terms">
-          By joining and using Flavour Theory Academy Platform, you agree to our
-          <a href="#">Terms & Policies</a>
+          By joining and using Flavour Theory Academy <br/>Platform, you agree to our.
+          <a href="#" class="terms">Terms & Policies</a>
         </p>
       </form>
     </div>

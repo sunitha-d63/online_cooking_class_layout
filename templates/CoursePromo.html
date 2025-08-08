@@ -1,26 +1,48 @@
+{% block style %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/coursepromo.css') }}"
+/>
+{% endblock %}
 <div class="container py-5">
   <div class="row gx-4 align-items-stretch">
     <div class="col-12 col-md-5">
-      <div class="card h-100 shadow-sm border-0">
-        <img src="{{ url_for('static', filename='images/chef.png') }}"
-             class="card-img-top h-100"
-             style="object-fit: cover;"
-             alt="Chef"/>
+      <div class="card h-100 shadow-sm border-0 rounded overflow-hidden">
+        <img
+          src="{{ url_for('static', filename='images/chef.png') }}"
+          class="card-img-top h-100 img-fluid"
+          style="object-fit: cover"
+          alt="Chef"
+        />
       </div>
     </div>
-    <div class="col-12 col-md-7">
-      <div class="content-box h-100 d-flex flex-column justify-content-center">
-        <h2 class="fw-bold text-center mb-4">
-          TAKE YOUR COOKING SKILLS TO THE NEXT LEVEL WITH MASTER CHEFS
-        </h2>
-        <p class="text-muted fs-5 text-center mb-4">
-          CULINARY TIPS AND TRICKS STRAIGHT FROM THE EXPERT,ON HOW TO COOK SCRUMPTIOUS,
-          INSTAGRAM READY, LIP SMACKING DISHES THAT ARE CLEAN, HEALTHY,
-          AND ENERGIZING.
-        </p>
+    <div class="col-12 col-md-7 position-relative">
+      <div
+        class="content-box h-100 d-flex flex-column justify-content-center p-4 rounded shadow-sm position-relative"
+      >
+        <div class="d-flex justify-content-center">
+          <div class="left-align-text" style="max-width: 400px">
+            <h3 class="fw-bold text-center mb-4">
+              TAKE YOUR COOKING SKILLS TO THE NEXT LEVEL WITH MASTER CHEFS
+            </h3>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center">
+          <div class="left-align-text" style="max-width: 500px">
+            <p class="mb-4">
+              CULINARY TIPS AND TRICKS STRAIGHT FROM THE EXPERT, ON HOW TO COOK
+              SCRUMPTIOUS, INSTAGRAM READY, LIP-SMACKING DISHES THAT ARE CLEAN,
+              HEALTHY, AND ENERGIZING.
+            </p>
+          </div>
+        </div>
+        <div class="d-none d-md-block side-shape side-shape-left"></div>
+        <div class="d-none d-md-block side-shape side-shape-right"></div>
         <div class="text-center mt-auto">
-          <a href="{{ url_for('courses') }}"
-             class="btn btn-danger btn-lg text-uppercase px-5 fw-semibold">
+          <a
+            href="{{ url_for('courses') }}"
+            class="btn btn-danger btn-lg text-uppercase px-5 fw-semibold rounded-pill"
+          >
             View Courses
           </a>
         </div>

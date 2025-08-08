@@ -19,7 +19,7 @@
   margin-top: 21px;
 }
 .Chef-baking {
-  border: 10px solid #28a745 !important;
+  border: 8px solid #28a745 !important;
   margin-left: -50px !important;
 }
 .chef-img {
@@ -27,7 +27,48 @@
   transform: translateY(30px);
   margin-left: -70px !important;
 }
- @media (min-width: 768px) and (max-width: 991.98px) {
+.bottom-icons {
+  position: absolute;
+  bottom: -2%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12rem;
+  z-index: 5;
+}
+
+.bottom-icons img {
+  width: 160px;
+}
+
+@media only screen and (max-width: 575.98px) {
+  .content-overlay .title {
+    font-size: 12px !important;
+  }
+  .content-overlay p {
+    font-size: 14px !important;
+  }
+  .enroll-btn {
+    font-size: 10px !important;
+  }
+  .bottom-icons {
+    display: none !important;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+  .content-overlay .title {
+    font-size: 14px !important;
+  }
+  .content-overlay p {
+    font-size: 18px !important;
+  }
+  .bottom-icons {
+    gap: 2rem !important;
+    z-index: 5;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
   .chef-img {
     border: 4px solid rgb(135, 194, 135);
     max-width: 240px !important;

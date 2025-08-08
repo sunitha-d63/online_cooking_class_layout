@@ -1,12 +1,10 @@
-body {
-  font-family: Poppins;
+
+.gradient-custom {
+    background: linear-gradient(to bottom, #c5df9b, transparent);
+  border-radius: 15px;   
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-.content-box {
-  border: 3px solid #A7C957;
-  border-radius: 20px;
-  padding: 1.5rem;
-  background-color: white;
-}
+
 .about-section {
   background-color: #fff7f1;
   color: #333;
@@ -36,6 +34,12 @@ body {
 .hero-copy .lead {
   font-size: 1.125rem; 
 }
+hr.thick-white {
+  height: 4px;   
+  background-color: #ffffff !important; 
+  border: none; 
+}
+
 @media (min-width: 576px) {
   .hero-copy .lead {
     font-size: 1.25rem;

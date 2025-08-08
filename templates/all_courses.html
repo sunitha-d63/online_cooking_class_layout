@@ -30,7 +30,7 @@ Save Money By Making Amazing Food On Your Own Like The MasterChef. From How To
 Use A Cooker", "offer": "Limited Period Offer - Get 67% OF", "priceOld": 6000,
 "priceNew": 1999, "bg_url": url_for('static', filename='images/card.png'),
 "link": url_for('course_des') }, ] %} {# INLINE LOOP FOR ALL COURSES #}
-<section class="py-5 bg-light text-center">
+<section class="py-5 text-center">
   <div class="container">
     <h2 class="display-5 fw-bold mb-5">ALL COURSES</h2>
     <div
@@ -59,7 +59,7 @@ Use A Cooker", "offer": "Limited Period Offer - Get 67% OF", "priceOld": 6000,
                 {{ course.title }}
               </h5>
               <div class="course-info bg-white text-dark rounded p-3 mt-2">
-                <p class="text-center small fw-semibold fs-4 mb-1">
+                <p class="text-center small fw-semibold fs-5 mb-1">
                   {{ course.description }}
                 </p>
                 <p class="text-center fw-bold fs-6 mb-1">{{ course.offer }}</p>
