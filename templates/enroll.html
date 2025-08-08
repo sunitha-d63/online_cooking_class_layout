@@ -115,14 +115,14 @@ style %}
 <script>
   function selectPayment(method) {
     document.getElementById('payment').value = method;
-    document.querySelectorAll('.btn-outline-primary').forEach(btn => {
-      btn.classList.remove('btn-primary');
-      btn.classList.add('btn-outline-primary');
+    document.querySelectorAll('.btn-outline-secondary').forEach(btn => {
+      btn.classList.remove('btn-secondary');
+      btn.classList.add('btn-outline-secondary');
     });
     const selectedBtn = method === 'upi' ? document.querySelector('.me-2') : document.querySelector('.me-2 + .btn');
     if (selectedBtn) {
-      selectedBtn.classList.add('btn-primary');
-      selectedBtn.classList.remove('btn-outline-primary');
+      selectedBtn.classList.add('btn-secondary');
+      selectedBtn.classList.remove('btn-outline-secondary');
     }
   }
 </script>
